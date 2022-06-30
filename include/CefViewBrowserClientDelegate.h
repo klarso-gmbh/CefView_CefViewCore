@@ -117,7 +117,11 @@ public:
 
   virtual void loadingProgressChanged(CefRefPtr<CefBrowser>& browser, double progress) = 0;
 
-  virtual void consoleMessage(CefRefPtr<CefBrowser>& browser, const std::string& message, int level) = 0;
+  virtual void consoleMessage(CefRefPtr<CefBrowser>& browser,
+                              const std::string& message,
+                              int level,
+                              const std::string& source,
+                              int line) = 0;
 
   virtual bool cursorChanged(CefRefPtr<CefBrowser> browser,
                              CefCursorHandle cursor,

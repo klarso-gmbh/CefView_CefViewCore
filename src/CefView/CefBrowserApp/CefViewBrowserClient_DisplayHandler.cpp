@@ -99,7 +99,7 @@ CefViewBrowserClient::OnConsoleMessage(CefRefPtr<CefBrowser> browser,
 
   auto delegate = client_delegate_.lock();
   if (delegate)
-    delegate->consoleMessage(browser, message.ToString(), level);
+    delegate->consoleMessage(browser, message.ToString(), level, source.ToString(), line);
 
 #if (defined(DEBUG) || defined(_DEBUG) || !defined(NDEBUG))
   return false;
