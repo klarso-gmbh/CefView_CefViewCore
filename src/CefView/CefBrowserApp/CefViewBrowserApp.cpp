@@ -16,9 +16,11 @@
 #include <CefViewCoreProtocol.h>
 
 CefViewBrowserApp::CefViewBrowserApp(const std::string& bridge_name,
-                                     CefViewBrowserAppDelegateInterface::RefPtr delegate)
+                                     CefViewBrowserAppDelegateInterface::RefPtr delegate,
+                                     std::set<std::string> custom_schemes)
   : bridge_object_name_(bridge_name)
   , app_delegate_(delegate)
+  , custom_schemes_(custom_schemes)
 {}
 
 CefViewBrowserApp::~CefViewBrowserApp()
@@ -54,6 +56,9 @@ void
 CefViewBrowserApp::RegisterCustomSchemes(CefRawPtr<CefSchemeRegistrar> registrar)
 {
   CefViewDefaultSchemeHandler::RegisterScheme(registrar);
+  for (const std::string& scheme : custom_schemes_) {
+    registrar->AddCustomScheme(scheme, CEF_SCHEME_OPTION_NONE);
+  }
 }
 
 //////////////////////////////////////////////////////////////////////////

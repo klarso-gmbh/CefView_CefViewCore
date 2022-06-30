@@ -35,8 +35,11 @@ private:
   // The app delegate
   CefViewBrowserAppDelegateInterface::WeakPtr app_delegate_;
 
+  // Custom scheme list
+  std::set<std::string> custom_schemes_;
+
 public:
-  CefViewBrowserApp(const std::string& bridge_name, CefViewBrowserAppDelegateInterface::RefPtr delegate);
+  CefViewBrowserApp(const std::string& bridge_name, CefViewBrowserAppDelegateInterface::RefPtr delegate, const std::set<std::string> customSchemes);
 
   ~CefViewBrowserApp();
 
@@ -51,7 +54,7 @@ private:
   static void RegisterCustomSchemesHandlerFactories();
 
   // Registers custom schemes. Implemented in client_app_delegates.
-  static void RegisterCustomSchemes(CefRawPtr<CefSchemeRegistrar> registrar);
+  void RegisterCustomSchemes(CefRawPtr<CefSchemeRegistrar> registrar);
 
 #pragma region CefApp
 
