@@ -32,7 +32,6 @@ CefViewBrowserClient::CefViewBrowserClient(CefRefPtr<CefViewBrowserApp> app,
 
 CefViewBrowserClient::~CefViewBrowserClient()
 {
-  log_debug("CefViewBrowserClient::~CefViewBrowserClient()");
   app_->CheckOutClient(this);
 }
 
