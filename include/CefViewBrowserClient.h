@@ -34,6 +34,7 @@ class CefViewBrowserClient
   , public CefContextMenuHandler
   , public CefDisplayHandler
   , public CefDragHandler
+  , public CefFindHandler
   , public CefFocusHandler
   , public CefJSDialogHandler
   , public CefKeyboardHandler
@@ -372,5 +373,14 @@ protected:
   void OnDownloadUpdated(CefRefPtr<CefBrowser> browser,
                          CefRefPtr<CefDownloadItem> download_item,
                          CefRefPtr<CefDownloadItemCallback> callback) override;
+
+  // CefFindHandler methods
+  virtual CefRefPtr<CefFindHandler> GetFindHandler() override;
+  virtual void OnFindResult(CefRefPtr<CefBrowser> browser,
+                            int identifier,
+                            int count,
+                            const CefRect& selectionRect,
+                            int activeMatchOrdinal,
+                            bool finalUpdate) override;
 };
 #endif
