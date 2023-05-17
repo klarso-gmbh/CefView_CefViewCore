@@ -1,4 +1,4 @@
-﻿#include <CefViewBrowserClient.h>
+#include <CefViewBrowserClient.h>
 
 #pragma region std_headers
 #include <sstream>
@@ -131,7 +131,7 @@ CefViewBrowserClient::AsyncExecuteJSCode(CefRefPtr<CefBrowser> browser,
   std::ostringstream codeWrapper;
   codeWrapper << "window." << kCefViewReportJSResultFunctionName << "(" //
               << contextId << " "                                       //
-              << ", function(){" << code << " }()"                      //
+              << ", function(){try{" << code << "} catch (e) { return e; }}()"                      //
               << ");";
 
   frame->ExecuteJavaScript(codeWrapper.str().c_str(), url, 0);
