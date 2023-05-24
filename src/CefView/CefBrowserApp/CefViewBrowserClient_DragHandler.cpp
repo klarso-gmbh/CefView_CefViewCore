@@ -30,7 +30,7 @@ CefViewBrowserClient::OnDragEnter(CefRefPtr<CefBrowser> browser,
     return true;
   }
 
-  return true;
+  return false;
 }
 
 void
