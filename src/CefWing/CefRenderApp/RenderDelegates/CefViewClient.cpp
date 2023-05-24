@@ -263,12 +263,14 @@ CefViewClient::V8ValueToCefValue(CefV8Value* v8Value)
     cefValue->SetNull();
   else if (v8Value->IsBool())
     cefValue->SetBool(v8Value->GetBoolValue());
-  else if (v8Value->IsDouble())
-    cefValue->SetDouble(v8Value->GetDoubleValue());
-  else if (v8Value->IsUInt())
-    cefValue->SetDouble(v8Value->GetUIntValue());
+//  else if (v8Value->IsDouble())
+//    cefValue->SetDouble(v8Value->GetDoubleValue());
+//  else if (v8Value->IsUInt())
+//    cefValue->SetDouble(v8Value->GetUIntValue());
   else if (v8Value->IsInt())
     cefValue->SetInt(v8Value->GetIntValue());
+  else if (v8Value->IsUInt() || v8Value->IsDouble())
+	cefValue->SetDouble(v8Value->GetDoubleValue());
   else if (v8Value->IsString())
     cefValue->SetString(v8Value->GetStringValue());
   else if (v8Value->IsArrayBuffer()) {
